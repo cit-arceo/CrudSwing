@@ -45,6 +45,7 @@ public class GuiEmpleados extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jData = new javax.swing.JTable();
 
+        jInternalFrame2.setBackground(new java.awt.Color(218, 219, 189));
         jInternalFrame2.setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N

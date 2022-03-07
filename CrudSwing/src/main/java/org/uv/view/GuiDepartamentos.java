@@ -39,6 +39,7 @@ public class GuiDepartamentos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jData = new javax.swing.JTable();
 
+        jInternalFrame1.setBackground(new java.awt.Color(218, 219, 189));
         jInternalFrame1.setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -123,7 +124,7 @@ public class GuiDepartamentos extends javax.swing.JPanel {
                     .addComponent(btnReadAll))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
