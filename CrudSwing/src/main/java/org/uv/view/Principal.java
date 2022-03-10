@@ -38,17 +38,7 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane1.setBackground(new java.awt.Color(218, 219, 189));
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-        );
+        jDesktopPane1.setLayout(new java.awt.GridLayout(1, 0));
 
         jMenu1.setText("File");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        mnSalir.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         mnSalir.setText("Salir");
         mnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
 
+        mnEmpleados.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         mnEmpleados.setText("Empleados");
         mnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +69,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(mnEmpleados);
 
+        mnDepartamentos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         mnDepartamentos.setText("Departamentos");
         mnDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,11 +86,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
         pack();
@@ -159,28 +152,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnActualizar1;
-    private javax.swing.JButton btnActualizar2;
-    private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnBorrar1;
-    private javax.swing.JButton btnBorrar2;
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnIngresar1;
-    private javax.swing.JButton btnIngresar2;
-    private javax.swing.JButton btnListar;
-    private javax.swing.JButton btnListar1;
-    private javax.swing.JButton btnListar2;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JMenuItem mnDepartamentos;
     private javax.swing.JMenuItem mnEmpleados;
     private javax.swing.JMenuItem mnSalir;

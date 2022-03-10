@@ -71,8 +71,8 @@ public class daoDepartamento implements Idao <Departamentos>{
     public List<Departamentos> readAll() {
         session = sessionFactory.openSession();
         session.beginTransaction();
-        
-        Query query = session.createQuery("from departamentos"); 
+        //corregir la parte del query no funciona
+        Query query = session.createQuery("from departamentos");
         
         List list=query.list();
         

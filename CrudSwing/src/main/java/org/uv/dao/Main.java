@@ -27,7 +27,7 @@ public class Main {
         emp.setDepartamentos(depto);
 //        emp.setClave(5);
         
-        System.out.println(depaDao.insert(depto));
+//        System.out.println(depaDao.insert(depto));
 
 //Mostrar uno        
 //        Empleados empleado = (Empleados) empDao.readOne(emp);
@@ -35,13 +35,13 @@ public class Main {
 //        Departamentos departamento = (Departamentos) dao.readOne(dep);
 //        System.out.println(departamento.getClave() + " " + departamento.getNombre());
 //Mostrar todos        
-//        List<Empleados> lista = empDao.readAll();
+        List<Empleados> lista = empDao.readAll();
 
-//        for(Empleados empleado : lista ){
-//            System.out.println(empleado.getClave() + " " + empleado.getNombre()
-//                    + " " + empleado.getDireccion() + " " + empleado.getTelefono() 
-//                    + " " );
-//        } 
+        for(Empleados empleado : lista ){
+            System.out.println(empleado.getClave() + " " + empleado.getNombre()
+                    + " " + empleado.getDireccion() + " " + empleado.getTelefono() 
+                    + " " );
+        } 
         
     }
 }

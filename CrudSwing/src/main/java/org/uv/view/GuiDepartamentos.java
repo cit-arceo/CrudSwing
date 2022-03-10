@@ -1,21 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.uv.view;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.uv.dao.daoDepartamento;
+import org.uv.model.Departamentos;
 /**
  *
  * @author citla
  */
 public class GuiDepartamentos extends javax.swing.JPanel {
-
-    /**
-     * Creates new form GuiDepartamentos
-     */
+    private DefaultTableModel modelo;
+    private daoDepartamento daoDepa;
+    private Departamentos departamento;
     public GuiDepartamentos() {
         initComponents();
+        modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"Clave","Nombre"});
+        jData.setModel(modelo);
+        departamento = new Departamentos();
+        daoDepa = new daoDepartamento();
     }
 
     /**
@@ -38,6 +42,8 @@ public class GuiDepartamentos extends javax.swing.JPanel {
         btnReadAll = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jData = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        txtClave = new javax.swing.JTextField();
 
         jInternalFrame1.setBackground(new java.awt.Color(218, 219, 189));
         jInternalFrame1.setVisible(true);
@@ -51,18 +57,43 @@ public class GuiDepartamentos extends javax.swing.JPanel {
 
         btnInsert.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnReadOne.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnReadOne.setText("ReadOne");
+        btnReadOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadOneActionPerformed(evt);
+            }
+        });
 
         btnReadAll.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnReadAll.setText("ReadAll");
+        btnReadAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadAllActionPerformed(evt);
+            }
+        });
 
         jData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,20 +108,37 @@ public class GuiDepartamentos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jData);
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel3.setText("Clave:");
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(157, 157, 157))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(btnInsert)
-                        .addGap(18, 18, 18)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                        .addGap(183, 183, 183)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(27, 27, 27)
+                                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(27, 27, 27)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(btnInsert)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnDelete)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUpdate)
@@ -98,13 +146,7 @@ public class GuiDepartamentos extends javax.swing.JPanel {
                                 .addComponent(btnReadOne)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnReadAll)))))
-                .addGap(30, 30, 30))
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jLabel2)
-                .addGap(27, 27, 27)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +155,13 @@ public class GuiDepartamentos extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                .addGap(32, 32, 32)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsert)
                     .addComponent(btnDelete)
@@ -124,24 +170,76 @@ public class GuiDepartamentos extends javax.swing.JPanel {
                     .addComponent(btnReadAll))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jInternalFrame1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jInternalFrame1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        departamento.setClave(Long.parseLong(txtClave.getText()));
+        departamento.setNombre(txtNombre.getText());
+        if(daoDepa.insert(departamento))
+            JOptionPane.showMessageDialog(null, "ÉXITO");
+        else
+            JOptionPane.showMessageDialog(null, "ERROR");
+        cleanTextFields();
+    }//GEN-LAST:event_btnInsertActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        departamento.setClave(Long.parseLong(txtClave.getText()));
+        if(daoDepa.delete(departamento))
+            JOptionPane.showMessageDialog(null, "ÉXITO");
+        else
+            JOptionPane.showMessageDialog(null, "ERROR");
+        cleanTextFields();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        departamento.setClave(Long.parseLong(txtClave.getText()));
+        departamento.setNombre(txtNombre.getText());
+        if(daoDepa.update(departamento))
+            JOptionPane.showMessageDialog(null, "ÉXITO");
+        else
+            JOptionPane.showMessageDialog(null, "ERROR");
+        cleanTextFields();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnReadOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadOneActionPerformed
+        resetTable();
+        departamento.setClave(Long.parseLong(txtClave.getText()));
+        Departamentos data = daoDepa.readOne(departamento);
+        modelo.addRow(new Object[]{data.getClave(), data.getNombre()});
+        cleanTextFields();
+    }//GEN-LAST:event_btnReadOneActionPerformed
+
+    private void btnReadAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadAllActionPerformed
+        resetTable();
+        List<Departamentos> lista = daoDepa.readAll();
+        for(Departamentos dep : lista){
+            modelo.addRow(new Object[]{dep.getClave(),dep.getNombre()});
+        }
+        cleanTextFields();
+    }//GEN-LAST:event_btnReadAllActionPerformed
+
+    private void resetTable() {
+        modelo.setRowCount(0);
+    }
+
+    private void cleanTextFields() {
+        txtClave.setText("");
+        txtNombre.setText("");
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
@@ -152,7 +250,9 @@ public class GuiDepartamentos extends javax.swing.JPanel {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtClave;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
